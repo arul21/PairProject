@@ -20,6 +20,16 @@ sequelize seed:generate --name Customer
 sequelize seed:generate --name Court
 sequelize seed:generate --name Grid
 sequelize seed:generate --name Schedule
+sequelize seed:generate --name Order
+sequelize seed:generate --name ScheduleOrder
+
+sequelize db:seed --seed 20180927071843-Customer
+sequelize db:seed --seed 20180927071845-Court
+sequelize db:seed --seed 20180927073624-Grid
+sequelize db:seed --seed 20180927074657-Schedule
+sequelize db:seed --seed 20180927075413-Order
+sequelize db:seed --seed 20180927075802-ScheduleOrder
 
 
-sq db:seed:all
+
+
