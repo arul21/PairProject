@@ -4,11 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     time1: DataTypes.STRING,
     time2: DataTypes.STRING,
     price: DataTypes.FLOAT,
-    CourtId: DataTypes.INTEGER
+    CourtId:DataTypes.INTEGER
   }, {});
   Schedule.associate = function(models) {
     // associations can be defined here
-    Schedule.hasMany(models.ScheduleOrder)
+    Schedule.hasMany(models.ScheduleOrder),
+    Schedule.belongsTo(models.Courts)
   };
   return Schedule;
 };

@@ -17,6 +17,7 @@ module.exports ={
 
     loginOrder_post: (req,res)=>{
         //res.send(req.body)
+
         Model.Customer.findOne({
             where:{ id:req.body.id, phone:req.body.phone}
         })
@@ -33,45 +34,45 @@ module.exports ={
                 //res.send(req.session)
                 //res.redirect('/orders');
                 //res.send(`loginnnnn`)
-                Model.Schedule.findAll()
-                .then((schedules) => {
-                    //res.send(schedules)
-                    res.render('order',{schedules:schedules})
-                }).catch((err) => {
-                    res.send(err)
-                });
-                // Model.Grid.findAll({
+                res.redirect('/orders/user')
+                // Model.Schedule.findAll({
+                //     order: [['id', 'ASC']],
                 //     include :{
-                //         model: Model.Order,
-                //         include : {
-                //             model: Model.ScheduleOrder,
-                //             include : {
-                //                 model: Model.Schedule
-                //             }
-                //             }
-                //         },where:{CourtId:1}
+                //         model: Model.ScheduleOrder,
+                //         include : {model:Model.GridOrder}
+                //     }
+                // })
+                // .then((schedules) => {
+                //     //res.send(schedules)
 
-                // })
-                // .then(data=>{
-                   
                     
-                // })
-                // .catch(err=>{
+                //     res.render('order',{schedules:schedules})
+                // }).catch((err) => {
                 //     res.send(err)
-                // })
+                // });
+               
             }else
-                res.redirect('/loginOrder');
+                res.redirect('/orders/login');
 
         }).catch((err) => {
             res.send( `order.controller loginOrder_post: ${err}`)
         });
     },
     
-    order_get: (req,res)=>{
-        if(req.session.phone){
-            res.send(`login`)
-        }else
-            res.redirect('/loginOrder');
+    userOrder_get: (req,res)=>{
+         Model.Schedule.findAll({
+            order: [['id', 'ASC']],
+            include :{
+                model: Model.ScheduleOrder,
+                include : {model:Model.GridOrder}
+            }
+        })
+        .then((schedules) => {
+            //res.send(schedules)    
+            res.render('order',{schedules:schedules})
+        }).catch((err) => {
+            res.send(err)
+        });
     }
     
 

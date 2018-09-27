@@ -10,26 +10,38 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        ScheduleId: 1,
+        ScheduleId: 2,
         OrderId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        ScheduleId: 3,
+        ScheduleId: 1,
         OrderId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        ScheduleId: 2,
+        OrderId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        ScheduleId: 3,
+        OrderId: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         ScheduleId: 4,
-        OrderId: 2,
+        OrderId: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         ScheduleId: 5,
-        OrderId: 2,
+        OrderId: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       }
