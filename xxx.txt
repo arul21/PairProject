@@ -1,0 +1,6 @@
+sequelize model:generate --name Customer --attributes name:string,email:string,phone:string
+sequelize model:generate --name Courts --attributes name:string
+sequelize model:generate --name Grid --attributes grid:integer,CourtId:integer
+sequelize model:generate --name Schedule --attributes startTime:string,endTime:string,price:FLOAT
+sequelize model:generate --name Order --attributes GridId:integer,CustomerId:integer,amount:FLOAT
+sequelize model:generate --name ScheduleOrder --attributes ScheduleId:integer,OrderId:integer
