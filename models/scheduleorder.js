@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     OrderId: DataTypes.INTEGER
   }, {});
   ScheduleOrder.associate = function(models) {
-    // associations can be defined here
+    ScheduleOrder.belongsTo(models.Schedule)
+    ScheduleOrder.belongsTo(models.Order)
   };
   return ScheduleOrder;
 };

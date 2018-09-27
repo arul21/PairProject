@@ -6,7 +6,6 @@ module.exports ={
             order : ['id']
         })
         .then(data=>{
-            // res.send(data)
             res.render('customer', {data:data})
         })
         .catch(err=>{
@@ -15,7 +14,6 @@ module.exports ={
     },
     add : (req,res)=>{
         res.render('addCustomer')
-
     },
     regCustomer: (req,res)=>{
         Model.Customer.create({
@@ -31,8 +29,4 @@ module.exports ={
         })
     },
     
-
-
-
-
 }

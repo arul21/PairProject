@@ -6,7 +6,9 @@ module.exports = (sequelize, DataTypes) => {
     amount: DataTypes.FLOAT
   }, {});
   Order.associate = function(models) {
-    // associations can be defined here
+    Order.belongsTo(models.Customer)
+    Order.belongsTo(models.Grid)
+    Order.hasMany(models.ScheduleOrder)
   };
   return Order;
 };
