@@ -1,0 +1,25 @@
+
+
+npm init -y
+sq init
+npm install express ejs sequelize pg pg-hstore
+//finalproject
+sq db:create 
+
+sq model:generate --name Customer --attributes name:string,email:string,phone:string
+sq model:generate --name Courts --attributes name:string
+sq model:generate --name Grid --attributes grid:integer,CourtId:integer
+sq model:generate --name Schedule --attributes time1:string,time2:string,price:FLOAT
+sq model:generate --name Order --attributes GridId:integer,CustomerId:integer,amount:FLOAT
+sq model:generate --name ScheduleOrder --attributes ScheduleId:integer,OrderId:integer
+
+sequelize db:migrate
+
+
+sequelize seed:generate --name Customer
+sequelize seed:generate --name Court
+sequelize seed:generate --name Grid
+sequelize seed:generate --name Schedule
+
+
+sq db:seed:all
