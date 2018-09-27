@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>All Customer</title>
+</head>
+<body>
+    <h1>Order</h1>
+   
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Action</th>
+            <th>Schedule</th>
+            <th>Grids</th>
+        </tr>
+        <% schedules.forEach(function(schedule){ %>
+        <tr>
+            <td><%= schedule.id %></td>
+            <td><input type="checkbox" name="<%= schedule.id %>" value="<%= schedule.id %>"></td>
+            <td> <%= schedule.time1 %> - <%= schedule.time2 %></td>
+            <td>
+                
+            </td>
+            
+        </tr>
+         <% }) %>
+
+    </table>
+        <input type="submit" value="Submit">
+
+</body>
+</html>

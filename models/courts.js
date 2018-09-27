@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Courts.associate = function(models) {
     // associations can be defined here
+    Courts.hasMany(models.Grid)
   };
   return Courts;
 };

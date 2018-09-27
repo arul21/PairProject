@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Schedule.associate = function(models) {
     // associations can be defined here
+    Schedule.hasMany(models.ScheduleOrder)
   };
   return Schedule;
 };
