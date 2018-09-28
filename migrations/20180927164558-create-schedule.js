@@ -9,13 +9,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       startTime: {
-        type: Sequelize.STRING
+        type: Sequelize.TIME
       },
       endTime: {
-        type: Sequelize.STRING
-      },
-      price: {
-        type: Sequelize.FLOAT
+        type: Sequelize.TIME
       },
       createdAt: {
         allowNull: false,

@@ -1,16 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home - Reservation Badminton</title>
-</head>
-<body>
-    <h3>Reservation Badminton</h3>
-    <a href = "/customer/registrasi">Register</a>
-    <a href = "/customer/registrasi">Reservasi</a>
-
-    
-</body>
-</html>
+<%- include('template/header') %>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <% if(user) { %>
+            <%- include('template/user') %>
+            <%- include('template/menu') %>
+            <% } %>
+        </div>
+        <div class="col-sm-9">
+            <div class="row">
+            <% if(cs) {
+                    for(let i = 0; i < cs.length; i++) {
+                %>
+            <div class="col-sm-4">
+                <div class="card mb-3 mr-3">
+                    <div class="card-body">
+                        <blockquote class="blockquote">
+                            <p>
+                                <%= cs[i].Court.name %>
+                            </p>
+                            <p>
+                                <%= cs[i].Schedule.startTime %> -
+                                <%= cs[i].Schedule.endTime %>
+                            </p>
+                            <p>Rp.
+                                <%= cs[i].price %>
+                            </p>
+                            <% if(user) { %>
+                            <button class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#modalBooking">Booking Now</button>
+                            <% } else { %>
+                            <a href="/user/signin" class="btn btn-outline-primary btn-block">Login for Book</a>
+                            <% } %>
+                        </blockquote>
+                        <% if(user) { %>
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalBooking" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="modelTitleId">Confirm for Book</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/book/add" method="post">
+                                            <strong>This Booking just for same day</strong> <hr>
+                                            Court : <%= cs[i].Court.name %> <br>
+                                            Time : <%= cs[i].Schedule.startTime %> - <%= cs[i].Schedule.endTime %>
+                                            <input type="hidden" name="harga" value="Rp.<%= cs[i].price %>">
+                                            <input type="hidden" name="nama" value="<%= user.name %>">
+                                            <input type="hidden" name="court" value="<%= cs[i].Court.name %>">
+                                            <input type="hidden" name="waktu" value="<%= cs[i].Schedule.startTime %> - <%= cs[i].Schedule.endTime %>">
+                                            <input type="hidden" name="email" value="<%= user.email %>" />
+                                            <input type="hidden" name="id" value="<%= user.id %>" />
+                                            <input type="hidden" name="book" value="<%= cs[i].id %>" />
+                                            <br>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Continue</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <% } } %>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('template/footer') %>
