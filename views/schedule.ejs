@@ -11,18 +11,19 @@
               <table class="table" width="100%">
                   <tr>
                     <th>No</th>
-                    <th>Start</th>
-                    <th>Finish</th>
+                    <th >Time</th>
+                    <th></th>
                     <th> <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalAdd">Add Schedule</button> </th>
                   </tr>
                 <% if(found) {
                   for(let i = 0; i < found.length; i++) {
                 %>
+                
                   <tr>
                     <td> <%= i+1 %> </td>
-                    <td> <%= found[i].startTime %> </td>
-                    <td> <%= found[i].endTime %> </td>
-                    <td> <a href="/court/<%=found[i].id %>/delete" class="btn btn-sm btn-danger"> Delete </a> </td>
+                    <td colspan="2"> <%= found[i].getSchedule() %> </td>
+                    
+                    <td> <a href="/schedule/<%=found[i].id %>/delete" class="btn btn-sm btn-danger"> Delete </a> </td>
                   </tr>
                 <% } } %>
               </table>

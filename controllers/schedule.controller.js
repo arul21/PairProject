@@ -20,6 +20,7 @@ module.exports = {
     })
   },
   remove: (req, res) => {
+    //res.send(`tes`)
     Model.Schedule.destroy({where: {id: req.params.id}})
     .then(() => {
       res.redirect('/schedule')

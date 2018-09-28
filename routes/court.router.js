@@ -2,6 +2,7 @@ const router = require('express').Router()
 const {getAll, add, remove} = require('../controllers/court.controller')
 
 router.get('/', function(req,res,next){
+    
     if(req.session.user)
         next()
     else
