@@ -1,0 +1,53 @@
+<%- include('template/header') %>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <% if(user) { %>
+                  <%- include('template/user') %>
+                  <%- include('template/menu') %>
+                <% } %> 
+            </div>
+            <div class="col-sm-9">
+              <table class="table" width="100%">
+                  <tr>
+                    <th>No</th>
+                    <th>Start</th>
+                    <th>Finish</th>
+                    <th> <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalAdd">Add Schedule</button> </th>
+                  </tr>
+                <% if(found) {
+                  for(let i = 0; i < found.length; i++) {
+                %>
+                  <tr>
+                    <td> <%= i+1 %> </td>
+                    <td> <%= found[i].startTime %> </td>
+                    <td> <%= found[i].endTime %> </td>
+                    <td> <a href="/court/<%=found[i].id %>/delete" class="btn btn-sm btn-danger"> Delete </a> </td>
+                  </tr>
+                <% } } %>
+              </table>
+            </div>
+        </div>
+    </div>    
+    <!-- Modal -->
+    <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modelTitleId">Add Schedule</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/schedule/add" method="post">
+              <input type="text" name="startTime" class="form-control mb-3" placeholder="Start" required />
+              <input type="text" name="endTime" class="form-control mb-3" placeholder="Finish" required />
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save Schedule</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+<%- include('template/footer') %>

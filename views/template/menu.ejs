@@ -1,0 +1,11 @@
+<% if(user.role !== 'member') { %>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Menu Admin</h5>
+    <a href="/courtschedule" class="btn btn-block btn-outline-success">Manage Court Schedule</a>
+    <a href="/court" class="btn btn-block btn-outline-success">Manage Court</a>
+    <a href="/schedule" class="btn btn-block btn-outline-success">Manage Schedule</a>
+    <a href="#" onclick="goBack()" class="btn btn-block btn-outline-success">Back</a>
+  </div>
+</div>
+<% } %>
