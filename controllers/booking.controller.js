@@ -4,7 +4,7 @@ const sgMail = require('@sendgrid/mail')
 module.exports = {
   add: (req, res) => {
     // console.log(req.body)
-    sgMail.setApiKey('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')
+    sgMail.setApiKey('')
       const msg = {
           to: req.body.email,
           from: 'ekomasukkpak@gmail.com',
