@@ -6,6 +6,8 @@ module.exports={
         var hash = bcrypt.hashSync(password,salt);
         return hash
     },
+
+    
     decode : (password,passwordOld,salt=10)=>{
         return bcrypt.compareSync(password,passwordOld);
     }
